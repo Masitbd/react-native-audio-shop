@@ -1,5 +1,5 @@
 export const typography = {
-    primary: "Spartan-Regular",
-    primaryBold: "Spartan-Bold",
-    bold: "Antonio-Medium",
-  };
+  primary: "Spartan-Regular",
+  primaryBold: "Spartan-Bold",
+  bold: "Antonio-Medium",
+};

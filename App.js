@@ -9,6 +9,9 @@ import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Home from './src/screens/home';
+import { Provider } from 'react-redux';
+import store from './src/store';
+import Navigation from './src/navigation';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -25,14 +28,17 @@ export default function App() {
   return (
     
      <>
-      <NavigationContainer>
+      <Provider store={store}>
+        <Navigation />
+      {/* <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}} >
          <Stack.Screen name="Home" component={Home} />
-          {/* <Stack.Screen name="Details" component={Details} />  */}
-        </Stack.Navigator>
+          </Stack.Navigator>
       </NavigationContainer>
-      <StatusBar style='light' />
+      <StatusBar style='light' /> */}
+      </Provider>
      </>
+     
   
   );
 }
