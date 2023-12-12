@@ -9,6 +9,9 @@ import ProductDetails from '../screens/product-details';
 import Earphones from '../screens/earphones';
 import Cart from '../screens/cart';
 import CheckOut from '../screens/checkout';
+import { colors } from '../theme/colors';
+import { MaterialCommunityIcons, SimpleLineIcons  } from 'react-native-vector-icons';
+
 
 
 const THEME = {
@@ -70,17 +73,37 @@ function CartStackScreens() {
     );
   }
 
-
+ function TarbarIcon({fonrtFamily, name, color}){
+  if (fonrtFamily === 'MaterialCommunityIcons') {
+    return <MaterialCommunityIcons name = {name} size= {24} color= {color} />
+  } 
+  else  if (fonrtFamily === 'Ionicons') {
+    return <MaterialCommunityIcons name = {name} size= {24} color= {color} />
+  } else  if (fonrtFamily === 'SimpleLineIcons') {
+    return <MaterialCommunityIcons name = {name} size= {24} color= {color} />
+  } 
+ }
 
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="HomeTab" component={HomeStackScreens} />
-        <Tab.Screen name="HearphonesTab" component={HeadphoneStackScreens} />
-        <Tab.Screen name="EarphonesTab" component={EarphoneStackScreens} />
-        <Tab.Screen name="SpeakersTab" component={SpeakerStackScreens} />
-        <Tab.Screen name="CartTab" component={CartStackScreens} />
+      <Tab.Navigator initialRouteName='Home' screenOptions={{ headerShown: false, tabBarActiveTintColor: colors.orange }}>
+        <Tab.Screen options={{title: 'Home',
+        tabBarIcon: ({color}) => <TarbarIcon
+         fonrtFamily={"MaterialCommunityIcons"} name="home" color={color} />}} name="HomeTab" component={HomeStackScreens} />
+        <Tab.Screen options={{title: 'Headphones',
+      tabBarIcon: ({color}) => <TarbarIcon
+      fonrtFamily={"MaterialCommunityIcons"} name="headphones" color={color} />}} name="HearphonesTab" component={HeadphoneStackScreens} />
+        <Tab.Screen options={{title: 'Earphones',
+      tabBarIcon: ({color}) => <TarbarIcon
+      fonrtFamily={"MaterialCommunityIcons"} name="headset" color={color} />}} name="EarphonesTab" component={EarphoneStackScreens} />
+        <Tab.Screen options={{title: 'Speakers',
+     tabBarIcon: ({color}) => <TarbarIcon
+     fonrtFamily={"MaterialCommunityIcons"} name="cellphone-nfc" color={color} />}} name="cellphone-nfc" component={SpeakerStackScreens} />
+        <Tab.Screen options={{title: 'Cart',
+         tabBarIcon: ({color}) => <TarbarIcon
+         fonrtFamily={"MaterialCommunityIcons"} name="cart" color={color} />}} name="CartTab"
+         component={CartStackScreens} />
       </Tab.Navigator>
     </NavigationContainer>
   );

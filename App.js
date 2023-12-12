@@ -7,7 +7,7 @@ import { typography } from './src/theme/typograpy';
 import Text from './src/components/text/text';
 import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Home from './src/screens/home';
 import { Provider } from 'react-redux';
 import store from './src/store';
@@ -29,7 +29,10 @@ export default function App() {
     
      <>
       <Provider store={store}>
-        <Navigation />
+        <SafeAreaProvider>
+          <Navigation />
+        </SafeAreaProvider>
+       
       {/* <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}} >
          <Stack.Screen name="Home" component={Home} />
